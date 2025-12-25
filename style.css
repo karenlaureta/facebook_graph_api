@@ -1,0 +1,210 @@
+/* ---------- ROOT VARIABLES (Facebook design tokens) ---------- */
+:root {
+  --fb-blue: #1877f2;
+  --bg-light: #f0f2f5;
+  --card-light: #ffffff;
+  --text-light: #050505;
+  --muted-light: #65676b;
+
+  --bg-dark: #18191a;
+  --card-dark: #242526;
+  --text-dark: #e4e6eb;
+  --muted-dark: #b0b3b8;
+}
+
+/* ---------- GLOBAL ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-light);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ---------- HEADER ---------- */
+header {
+  background: var(--fb-blue);
+  color: white;
+  padding: 16px;
+  text-align: center;
+  position: relative;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.subtitle {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+#themeToggle {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* ---------- MAIN ---------- */
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background: var(--card-light);
+  padding: 28px;
+  width: 100%;
+  max-width: 360px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  text-align: center;
+  transition: background 0.3s;
+}
+
+/* ---------- BUTTON ---------- */
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  background: var(--fb-blue);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  background: #166fe5;
+}
+
+.primary-btn:disabled {
+  opacity: 0.6;
+}
+
+/* ---------- LOADING ---------- */
+.loading {
+  margin-top: 15px;
+  font-size: 14px;
+  color: var(--muted-light);
+}
+
+/* ---------- CARD ---------- */
+.card {
+  margin-top: 24px;
+  padding: 20px;
+  background: var(--card-light);
+  border-radius: 8px;
+  animation: fadeSlideUp 0.4s ease forwards;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--fb-blue);
+  margin-bottom: 12px;
+}
+
+.card h2 {
+  margin: 8px 0 4px;
+  font-size: 18px;
+}
+
+.muted {
+  font-size: 13px;
+  color: var(--muted-light);
+}
+
+.id-box {
+  margin-top: 6px;
+  padding: 8px;
+  background: #e4e6eb;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+/* ---------- ERROR ---------- */
+.error {
+  color: #d93025;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+/* ---------- UTIL ---------- */
+.hidden {
+  display: none;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  text-align: center;
+  font-size: 12px;
+  padding: 12px;
+  color: var(--muted-light);
+}
+
+/* ================= DARK MODE ================= */
+body.dark {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+body.dark .container,
+body.dark .card {
+  background: var(--card-dark);
+}
+
+body.dark .muted,
+body.dark .loading,
+body.dark footer {
+  color: var(--muted-dark);
+}
+
+body.dark .id-box {
+  background: #3a3b3c;
+  color: var(--text-dark);
+}
+
+/* ---------- INFO CARDS ---------- */
+.info-card {
+  text-align: left;
+}
+
+.info-card h3 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
