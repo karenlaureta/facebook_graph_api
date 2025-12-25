@@ -1,4 +1,4 @@
-const APP_ID = "3096676660721369";
+const APP_ID = "YOUR_FACEBOOK_APP_ID"; // Change this with your facebook App ID
 const REDIRECT_URI = "http://localhost:5500/";
 const GRAPH_BASE = "https://graph.facebook.com/v19.0";
 
