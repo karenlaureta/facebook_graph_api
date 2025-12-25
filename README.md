@@ -1,6 +1,7 @@
 # Facebook Graph API Demo
 
 A lightweight web application that demonstrates **Facebook Graph API** integration using OAuth 2.0 to fetch and display basic user profile information in a clean, user-friendly interface.
+
 This project is intended for **educational and demonstration purposes**, showcasing how third-party authentication and API consumption work in a modern web environment.
 
 ---
