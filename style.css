@@ -1,34 +1,30 @@
-/* ---------- ROOT VARIABLES (Facebook design tokens) ---------- */
 :root {
   --fb-blue: #1877f2;
   --bg-light: #f0f2f5;
-  --card-light: #ffffff;
+  --glass-light: rgba(255,255,255,0.75);
   --text-light: #050505;
   --muted-light: #65676b;
 
-  --bg-dark: #18191a;
-  --card-dark: #242526;
+  --bg-dark: #0f1115;
+  --glass-dark: rgba(36,37,38,0.75);
   --text-dark: #e4e6eb;
   --muted-dark: #b0b3b8;
 }
 
-/* ---------- GLOBAL ---------- */
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: Helvetica, Arial, sans-serif;
-  background: var(--bg-light);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: radial-gradient(circle at top, #dfe9f3, #f0f2f5);
   color: var(--text-light);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  transition: background 0.3s, color 0.3s;
+  transition: 0.3s;
 }
 
-/* ---------- HEADER ---------- */
+/* Header */
 header {
   background: var(--fb-blue);
   color: white;
@@ -37,107 +33,45 @@ header {
   position: relative;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 22px;
-}
-
-.subtitle {
-  font-size: 13px;
-  opacity: 0.9;
-}
-
 #themeToggle {
   position: absolute;
   right: 15px;
   top: 15px;
-  background: rgba(255,255,255,0.2);
-  border: none;
-  border-radius: 50%;
   width: 36px;
   height: 36px;
+  border-radius: 50%;
+  border: none;
   cursor: pointer;
-  font-size: 16px;
 }
 
-/* ---------- MAIN ---------- */
+/* Layout */
 main {
   flex: 1;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .container {
-  background: var(--card-light);
-  padding: 28px;
   width: 100%;
-  max-width: 360px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  max-width: 380px;
+  padding: 30px;
+  border-radius: 16px;
   text-align: center;
-  transition: background 0.3s;
+  margin-top:8px;
 }
 
-/* ---------- BUTTON ---------- */
-.primary-btn {
-  width: 100%;
-  padding: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  background: var(--fb-blue);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+/* Glass effect */
+.glass {
+  background: var(--glass-light);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  animation: fadeUp 0.5s ease;
 }
 
-.primary-btn:hover {
-  background: #166fe5;
-}
-
-.primary-btn:disabled {
-  opacity: 0.6;
-}
-
-/* ---------- LOADING ---------- */
-.loading {
-  margin-top: 15px;
-  font-size: 14px;
-  color: var(--muted-light);
-}
-
-/* ---------- CARD ---------- */
-.card {
-  margin-top: 24px;
-  padding: 20px;
-  background: var(--card-light);
-  border-radius: 8px;
-  animation: fadeSlideUp 0.4s ease forwards;
-}
-
-@keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.card img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 3px solid var(--fb-blue);
-  margin-bottom: 12px;
-}
-
-.card h2 {
-  margin: 8px 0 4px;
-  font-size: 18px;
+/* Welcome */
+.welcome h2 {
+  margin-bottom: 6px;
 }
 
 .muted {
@@ -145,66 +79,192 @@ main {
   color: var(--muted-light);
 }
 
-.id-box {
-  margin-top: 6px;
-  padding: 8px;
-  background: #e4e6eb;
+/* Features */
+.feature-icons {
+  display: flex;
+  justify-content: space-between;
+  margin: 1px 0;
+}
+
+.feature {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted-light);
+}
+
+.feature .icon {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 18px 0;
+  font-size: 12px;
+  color: var(--muted-light);
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #ccc;
+}
+
+.divider span {
+  margin: 0 12px;
+}
+
+/* Buttons */
+.primary-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: var(--fb-blue);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(24,119,242,0.4);
+}
+
+.fb-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.fb-icon {
+  background: white;
+  color: var(--fb-blue);
+  font-weight: bold;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 6px;
-  font-family: monospace;
+}
+
+/* Profile Card */
+.card {
+  margin-top: 24px;
+}
+
+.avatar-wrap {
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, #1877f2, #60a5fa);
+  animation: pulse 2s infinite;
+}
+
+.avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: white;
+}
+
+.id-row {
+  margin-top: 12px;
   font-size: 13px;
 }
 
-/* ---------- ERROR ---------- */
+.id-row code {
+  display: block;
+  margin-top: 4px;
+  background: #e4e6eb;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+/* Info */
+.info-card {
+  margin-top: 12px;
+  padding: 12px;
+  background: rgba(24,119,242,0.08);
+  border-radius: 10px;
+  text-align: left;
+}
+
+.status-badge {
+  margin-top: 5px;
+  font-size: 11px;
+  background: #d1e7dd;
+  color: #0f5132;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+/* Logout */
+.secondary-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid var(--fb-blue);
+  background: transparent;
+  color: var(--fb-blue);
+  cursor: pointer;
+}
+
+/* Utils */
+.hidden { display: none; }
+
+.loading { font-size: 14px; }
+
 .error {
   color: #d93025;
-  margin-top: 12px;
-  font-size: 14px;
+  margin-top: 10px;
 }
 
-/* ---------- UTIL ---------- */
-.hidden {
-  display: none;
-}
-
-/* ---------- FOOTER ---------- */
+/* Footer */
 footer {
-  text-align: center;
   font-size: 12px;
+  text-align: center;
   padding: 12px;
   color: var(--muted-light);
 }
 
-/* ================= DARK MODE ================= */
+/* Dark Mode */
 body.dark {
-  background: var(--bg-dark);
+  background: radial-gradient(circle at top, #0f172a, #020617);
   color: var(--text-dark);
 }
 
-body.dark .container,
-body.dark .card {
-  background: var(--card-dark);
+body.dark .glass {
+  background: var(--glass-dark);
 }
 
 body.dark .muted,
-body.dark .loading,
 body.dark footer {
   color: var(--muted-dark);
 }
 
-body.dark .id-box {
+body.dark .id-row code {
   background: #3a3b3c;
   color: var(--text-dark);
 }
 
-/* ---------- INFO CARDS ---------- */
-.info-card {
-  text-align: left;
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.info-card h3 {
-  margin: 0 0 12px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-light);
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(24,119,242,0.6); }
+  50% { box-shadow: 0 0 0 12px rgba(24,119,242,0); }
 }
-

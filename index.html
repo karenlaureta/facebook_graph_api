@@ -1,54 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Facebook Graph API Project</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Facebook Graph API</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header>
-  <h1>Facebook Graph API</h1>
-
-  <!-- Dark mode toggle -->
-  <button id="themeToggle" aria-label="Toggle dark mode">
-    🌙
-  </button>
+  <div class="header-inner">
+    <h1>Facebook Graph API</h1>
+    <button id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+  </div>
 </header>
 
 <main>
-  <div class="container">
-    <button id="loginBtn" class="primary-btn">
+  <div class="container glass">
+
+    <!-- Welcome -->
+    <div id="welcomeSection" class="welcome">
+      <h2>Welcome Back 👋</h2>
+      <p class="muted">
+        Sign in with Facebook to view your public profile
+        using the Graph API.
+      </p>
+    </div>
+
+    <!-- Feature row -->
+    <div class="feature-icons">
+      <div class="feature">
+        <div class="icon">👤</div>
+        <span>Profile</span>
+      </div>
+      <div class="feature">
+        <div class="icon">🔐</div>
+        <span>Secure OAuth</span>
+      </div>
+      <div class="feature">
+        <div class="icon">⚡</div>
+        <span>Fast API</span>
+      </div>
+    </div>
+
+    <div class="divider"><span>Continue</span></div>
+
+    <!-- Login -->
+    <button id="loginBtn" class="primary-btn fb-btn">
+      <span class="fb-icon">f</span>
       Continue with Facebook
     </button>
 
-    <div id="loading" class="loading hidden">
-      ⏳ Fetching user data...
-    </div>
+    <p id="privacyNote" class="privacy-note">
+      We only access your public profile.
+      No data is stored on our servers.
+    </p>
 
+    <!-- Loading & Error -->
+    <div id="loading" class="loading hidden">⏳ Fetching profile…</div>
     <div id="error" class="error"></div>
 
+    <!-- Profile -->
     <div id="result" class="card hidden">
-      <img id="profilePic" alt="Profile Picture">
+      <div class="avatar-wrap">
+        <img id="profilePic" alt="Profile Picture" />
+      </div>
+
       <h2 id="name"></h2>
-      <p class="muted">Facebook ID</p>
-      <p id="userId" class="id-box"></p>
+
+      <div class="id-row">
+        <span>🆔 Facebook ID</span>
+        <code id="userId"></code>
+      </div>
+
+      <div class="info-card">
+        <h3>Session Status</h3>
+        <p class="muted">Authenticated via Facebook OAuth</p>
+        <span class="status-badge">● Active</span>
+      </div>
+
+      <button id="logoutBtn" class="secondary-btn">
+        🚪 Log out
+      </button>
     </div>
+
   </div>
 </main>
 
 <footer>
-  Meta © Facebook Graph API
+  Meta © Facebook Graph API Demo
 </footer>
 
 <script src="script.js"></script>
 
-<!-- tiny inline script for theme -->
 <script>
-  const toggle = document.getElementById('themeToggle');
+  const toggle = document.getElementById("themeToggle");
   toggle.onclick = () => {
-    document.body.classList.toggle('dark');
-    toggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    document.body.classList.toggle("dark");
+    toggle.textContent =
+      document.body.classList.contains("dark") ? "☀️" : "🌙";
   };
 </script>
 
