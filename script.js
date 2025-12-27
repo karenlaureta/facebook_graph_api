@@ -76,7 +76,6 @@ logoutBtn.onclick = () => {
   location.reload();
 };
 
-
 const token = getToken() || sessionStorage.getItem("fb_token");
 if (token) fetchProfile(token);
 else showLoggedOutUI();
