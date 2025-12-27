@@ -33,6 +33,16 @@ header {
   position: relative;
 }
 
+.status-badge {
+  margin-top: 5px;
+  font-size: 11px;
+  background: #d1e7dd;
+  color: #0f5132;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
 #themeToggle {
   position: absolute;
   right: 15px;
@@ -58,22 +68,16 @@ main {
   padding: 30px;
   border-radius: 16px;
   text-align: center;
-  margin-top:8px;
 }
 
-/* Glass effect */
+/* Glass */
 .glass {
   background: var(--glass-light);
   backdrop-filter: blur(16px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  animation: fadeUp 0.5s ease;
 }
 
 /* Welcome */
-.welcome h2 {
-  margin-bottom: 6px;
-}
-
 .muted {
   font-size: 13px;
   color: var(--muted-light);
@@ -83,7 +87,7 @@ main {
 .feature-icons {
   display: flex;
   justify-content: space-between;
-  margin: 1px 0;
+  margin: 14px 0;
 }
 
 .feature {
@@ -93,8 +97,10 @@ main {
 }
 
 .feature .icon {
-  font-size: 22px;
+  display: flex;
+  justify-content: center;
   margin-bottom: 6px;
+  color: var(--fb-blue);
 }
 
 /* Divider */
@@ -114,10 +120,6 @@ main {
   background: #ccc;
 }
 
-.divider span {
-  margin: 0 12px;
-}
-
 /* Buttons */
 .primary-btn {
   width: 100%;
@@ -128,12 +130,6 @@ main {
   color: white;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-
-.primary-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(24,119,242,0.4);
 }
 
 .fb-btn {
@@ -144,22 +140,20 @@ main {
 }
 
 .fb-icon {
-  background: white;
-  color: var(--fb-blue);
-  font-weight: bold;
   width: 22px;
   height: 22px;
+  background: white;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
 }
 
-/* Profile Card */
-.card {
-  margin-top: 24px;
+.fb-icon svg {
+  fill: var(--fb-blue);
 }
 
+/* Profile */
 .avatar-wrap {
   width: 120px;
   height: 120px;
@@ -177,36 +171,28 @@ main {
   background: white;
 }
 
-.id-row {
-  margin-top: 12px;
-  font-size: 13px;
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(24,119,242,0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(24,119,242,0);
+  }
 }
 
-.id-row code {
-  display: block;
-  margin-top: 4px;
-  background: #e4e6eb;
-  padding: 6px;
-  border-radius: 6px;
+.id-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-/* Info */
-.info-card {
-  margin-top: 12px;
-  padding: 12px;
-  background: rgba(24,119,242,0.08);
-  border-radius: 10px;
-  text-align: left;
-}
-
-.status-badge {
-  margin-top: 5px;
-  font-size: 11px;
-  background: #d1e7dd;
-  color: #0f5132;
-  padding: 4px 10px;
-  border-radius: 999px;
-  display: inline-block;
+/* SVG icons */
+svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
 }
 
 /* Logout */
@@ -218,20 +204,30 @@ main {
   border: 2px solid var(--fb-blue);
   background: transparent;
   color: var(--fb-blue);
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.secondary-btn {
+  transition: all 0.2s ease;
+}
+
+.secondary-btn:hover {
+  background: var(--fb-blue);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(24,119,242,0.35);
+}
+
+.secondary-btn:hover svg {
+  stroke: white;
 }
 
 /* Utils */
 .hidden { display: none; }
 
-.loading { font-size: 14px; }
-
-.error {
-  color: #d93025;
-  margin-top: 10px;
-}
-
-/* Footer */
 footer {
   font-size: 12px;
   text-align: center;
@@ -239,7 +235,7 @@ footer {
   color: var(--muted-light);
 }
 
-/* Dark Mode */
+/* Dark mode */
 body.dark {
   background: radial-gradient(circle at top, #0f172a, #020617);
   color: var(--text-dark);
@@ -254,17 +250,191 @@ body.dark footer {
   color: var(--muted-dark);
 }
 
-body.dark .id-row code {
+body.dark .id-container {
+  background: rgba(24,119,242,0.15);
+}
+
+body.dark .id-container code {
   background: #3a3b3c;
   color: var(--text-dark);
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Facebook ID container */
+.id-container {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(24,119,242,0.08);
 }
 
-@keyframes pulse {
-  0%,100% { box-shadow: 0 0 0 0 rgba(24,119,242,0.6); }
-  50% { box-shadow: 0 0 0 12px rgba(24,119,242,0); }
+.id-container code {
+  margin-top: 6px;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #e4e6eb;
+}
+.center-id {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.center-id code {
+  margin-top: 6px;
+}
+
+/* Copy ID row */
+.id-copy-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+/* Copy button */
+.copy-btn {
+  position: relative;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.copy-btn:hover {
+  background: rgba(24,119,242,0.15);
+  transform: scale(1.05);
+}
+
+/* Tooltip */
+.copy-btn .tooltip {
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: white;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Tooltip arrow */
+.copy-btn .tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #111 transparent transparent transparent;
+}
+
+/* Show tooltip */
+.copy-btn.copied .tooltip {
+  opacity: 1;
+  transform: translate(-50%, -4px);
+}
+
+/* Dark mode tooltip */
+body.dark .copy-btn .tooltip {
+  background: #e4e6eb;
+  color: #050505;
+}
+
+body.dark .copy-btn .tooltip::after {
+  border-color: #e4e6eb transparent transparent transparent;
+}
+
+/* Copy button */
+.copy-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(24,119,242,0.1);
+  color: var(--fb-blue);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.copy-btn:hover {
+  background: rgba(24,119,242,0.2);
+}
+
+/* SVG icon */
+.copy-icon {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+}
+
+/* Tooltip */
+.copy-btn .tooltip {
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Copied state */
+.copy-btn.copied {
+  color: #0f5132;
+  background: #d1e7dd;
+  animation: shake 0.35s ease;
+}
+
+.copy-btn.copied .copy-text {
+  display: none;
+}
+
+.copy-btn.copied .tooltip {
+  opacity: 1;
+}
+
+/* Shake animation */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-2px); }
+  100% { transform: translateX(0); }
+}
+
+/* Dark mode */
+body.dark .copy-btn {
+  background: rgba(24,119,242,0.2);
+}
+
+body.dark .copy-btn.copied {
+  background: #1f3d2b;
+  color: #b7f5c8;
+}
+
+body.dark .copy-btn .tooltip {
+  background: #e4e6eb;
+  color: #050505;
 }

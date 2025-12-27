@@ -68,10 +68,29 @@ function fetchProfile(token) {
 
 logoutBtn.onclick = () => {
   sessionStorage.clear();
+
+  const copyBtn = document.getElementById("copyBtn");
+  if (copyBtn) copyBtn.classList.remove("copied");
+
   history.replaceState(null, "", location.pathname);
   location.reload();
 };
 
+
 const token = getToken() || sessionStorage.getItem("fb_token");
 if (token) fetchProfile(token);
 else showLoggedOutUI();
+
+const copyBtn = document.getElementById("copyBtn");
+
+copyBtn?.addEventListener("click", () => {
+  const idText = document.getElementById("userId").textContent;
+
+  navigator.clipboard.writeText(idText).then(() => {
+    copyBtn.classList.add("copied");
+
+    setTimeout(() => {
+      copyBtn.classList.remove("copied");
+    }, 1500);
+  });
+});

@@ -20,7 +20,7 @@
 
     <!-- Welcome -->
     <div id="welcomeSection" class="welcome">
-      <h2>Welcome Back 👋</h2>
+      <h2>Welcome Back</h2>
       <p class="muted">
         Sign in with Facebook to view your public profile
         using the Graph API.
@@ -30,15 +30,32 @@
     <!-- Feature row -->
     <div class="feature-icons">
       <div class="feature">
-        <div class="icon">👤</div>
+        <div class="icon">
+          <!-- User -->
+          <svg viewBox="0 0 24 24">
+            <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/>
+          </svg>
+        </div>
         <span>Profile</span>
       </div>
+
       <div class="feature">
-        <div class="icon">🔐</div>
+        <div class="icon">
+          <!-- Lock -->
+          <svg viewBox="0 0 24 24">
+            <path d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2Zm-6 8v-3h2v3Z"/>
+          </svg>
+        </div>
         <span>Secure OAuth</span>
       </div>
+
       <div class="feature">
-        <div class="icon">⚡</div>
+        <div class="icon">
+          <!-- Bolt -->
+          <svg viewBox="0 0 24 24">
+            <path d="M13 2 3 14h7l-1 8 10-12h-7Z"/>
+          </svg>
+        </div>
         <span>Fast API</span>
       </div>
     </div>
@@ -47,7 +64,11 @@
 
     <!-- Login -->
     <button id="loginBtn" class="primary-btn fb-btn">
-      <span class="fb-icon">f</span>
+      <span class="fb-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M15 8h-2V6c0-.6.4-1 1-1h1V2h-2c-2.2 0-4 1.8-4 4v2H7v3h2v9h4v-9h2l.5-3Z"/>
+        </svg>
+      </span>
       Continue with Facebook
     </button>
 
@@ -57,7 +78,7 @@
     </p>
 
     <!-- Loading & Error -->
-    <div id="loading" class="loading hidden">⏳ Fetching profile…</div>
+    <div id="loading" class="loading hidden">Fetching profile…</div>
     <div id="error" class="error"></div>
 
     <!-- Profile -->
@@ -68,10 +89,28 @@
 
       <h2 id="name"></h2>
 
-      <div class="id-row">
-        <span>🆔 Facebook ID</span>
-        <code id="userId"></code>
-      </div>
+      <div class="id-container center-id">
+  <span class="id-label">
+    <svg viewBox="0 0 24 24">
+      <path d="M4 6h16v12H4zM7 10h4M7 14h10"/>
+    </svg>
+    Facebook ID
+  </span>
+
+  <div class="id-copy-row">
+  <code id="userId"></code>
+
+  <button id="copyBtn" class="copy-btn" aria-label="Copy Facebook ID">
+    <svg class="copy-icon" viewBox="0 0 24 24">
+      <path d="M9 9h10v12H9zM5 3h10v12H5z"/>
+    </svg>
+    <span class="copy-text">Copy</span>
+
+    <span class="tooltip">Copied ✓</span>
+  </button>
+</div>
+
+</div>
 
       <div class="info-card">
         <h3>Session Status</h3>
@@ -80,7 +119,10 @@
       </div>
 
       <button id="logoutBtn" class="secondary-btn">
-        🚪 Log out
+        <svg class="btn-icon" viewBox="0 0 24 24">
+          <path d="M10 17l5-5-5-5v10Zm-6 4h8v-2H4V5h8V3H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2Z"/>
+        </svg>
+        Log out
       </button>
     </div>
 
